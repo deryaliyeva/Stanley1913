@@ -4,9 +4,9 @@ import { Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import brands from "../data/Data.jsx";
+import brands from "../data/Data";
 
-function FavoritSlider() {
+function Favorites() {
     return (
         <div className="py-[48px] px-4 max-w-[1280px] mx-auto">
             <h2 className="text-[32px] text-[#101010] font-bold uppercase tracking-[1.8px] pb-5">
@@ -41,7 +41,7 @@ function FavoritSlider() {
                 spaceBetween={20}
                 pagination={{ clickable: true }}
                 modules={[Pagination]}
-                className="max-w-[1250px] mx-auto h-[200px]"
+                className="w-full h-[200px]"
                 breakpoints={{
                     1280: { slidesPerView: 4 },
                     1024: { slidesPerView: 4 },
@@ -54,16 +54,16 @@ function FavoritSlider() {
                     <SwiperSlide className="flex items-center justify-center h-full" key={brand.id}>
                         <Link
                             to={`/brand/${brand.slug}`}
-                            className="pb-5 h-full max-w-[200px]"
+                            className="flex flex-col items-center justify-center pb-5 h-full max-w-[300px] overflow-hidden"
                         >
-                            <div className="bg-gray-100 p-3 rounded-[8px] flex items-center justify-center w-full h-[140px]">
+                            <div className="bg-gray-100 p-3 rounded-[8px] flex items-center justify-center w-full flex-grow">
                                 <img
                                     src={brand.logo}
                                     alt={`${brand.name} logo`}
-                                    className="max-h-[100px] object-contain"
+                                    className="max-h-[120px] object-contain"
                                 />
                             </div>
-                            <span className="text-base font-bold mt-1 flex items-center justify-center px-2 text-[#101010]">{brand.name}</span>
+                            <span className="text-base font-bold mt-1 text-center px-2 text-[#101010]">{brand.name}</span>
                         </Link>
                     </SwiperSlide>
                 ))}
@@ -72,4 +72,4 @@ function FavoritSlider() {
     );
 }
 
-export default FavoritSlider;
+export default Favorites;
