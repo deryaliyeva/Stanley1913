@@ -80,7 +80,7 @@ function DetailsSlider({ productId }) {
                         className="flex items-center justify-center h-[160px]"
                     >
                         <div
-                            className="bg-white p-5 rounded-lg flex items-center justify-center w-full
+                            className="bg-white p-5 rounded-lg flex items-center justify-center w-full h-full
                                 shadow-[0_6px_12px_0_#0000001F]
                                 hover:shadow-[0_10px_20px_0_#00000029]
                                 transition-shadow duration-300"

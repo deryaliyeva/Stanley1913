@@ -56,7 +56,7 @@ function FavoritSlider() {
                             to={`/brand/${brand.slug}`}
                             className="flex flex-col items-center justify-center pb-5 h-full max-w-[300px] overflow-hidden"
                         >
-                            <div className="bg-gray-100 p-3 rounded-[8px] flex items-center justify-center w-full flex-grow">
+                            <div className="bg-gray-100 p-3 rounded-[8px] flex items-center justify-center w-full h-full flex-grow">
                                 <img
                                     src={brand.logo}
                                     alt={`${brand.name} logo`}
