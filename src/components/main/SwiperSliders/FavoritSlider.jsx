@@ -41,7 +41,7 @@ function FavoritSlider() {
                 spaceBetween={20}
                 pagination={{ clickable: true }}
                 modules={[Pagination]}
-                className="w-full h-[200px]"
+                className="max-w-[1250px] mx-auto h-[200px]"
                 breakpoints={{
                     1280: { slidesPerView: 4 },
                     1024: { slidesPerView: 4 },
