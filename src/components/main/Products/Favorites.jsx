@@ -4,7 +4,7 @@ import { Pagination } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/pagination";
-import brands from "../data/Data";
+import brands from "../data/brandData";
 
 function Favorites() {
     return (

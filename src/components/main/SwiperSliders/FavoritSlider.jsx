@@ -54,9 +54,9 @@ function FavoritSlider() {
                     <SwiperSlide className="flex items-center justify-center h-full" key={brand.id}>
                         <Link
                             to={`/brand/${brand.slug}`}
-                            className="pb-5 h-full max-w-[200px]"
+                            className="pb-5 h-full max-w-[200px] overflow-hidden"
                         >
-                            <div className="bg-gray-100 p-3 rounded-[8px] flex items-center justify-center w-full h-[140px]">
+                            <div className="bg-gray-100 p-3 rounded-[8px] flex items-center justify-center w-full h-[160px]">
                                 <img
                                     src={brand.logo}
                                     alt={`${brand.name} logo`}

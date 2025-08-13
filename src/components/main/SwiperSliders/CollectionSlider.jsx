@@ -39,7 +39,8 @@ function CollectionSlider() {
         <>
             <style>{`
                 .swiper-pagination {
-                    bottom: 10px !important;
+                    bottom: 0px !important;
+                    top: auto !important;
                     display: flex !important;
                     justify-content: center;
                     width: 100%;
@@ -56,12 +57,6 @@ function CollectionSlider() {
                         display: none !important;
                     }
                 }
-                .line-clamp-2 {
-                    display: -webkit-box;
-                    -webkit-line-clamp: 2;
-                    -webkit-box-orient: vertical;
-                    overflow: hidden;
-                }
             `}</style>
 
             <Swiper
@@ -69,7 +64,7 @@ function CollectionSlider() {
                 spaceBetween={20}
                 pagination={{ clickable: true }}
                 modules={[Pagination]}
-                className="max-w-[1250px] mx-auto h-[470px]"
+                className="max-w-[1250px] mx-auto h-[450px] my-5"
                 breakpoints={{
                     1280: { slidesPerView: 4 },
                     1024: { slidesPerView: 4 },
@@ -79,19 +74,19 @@ function CollectionSlider() {
                 }}
             >
                 {products.map((product) => (
-                    <SwiperSlide className="py-4 flex items-center justify-center h-full" key={product.id}>
+                    <SwiperSlide className="flex items-center justify-center h-full bg-gray-100 rounded-lg" key={product.id}>
                         <Link to={`/product/${product.id}`}
-                            className="flex flex-col items-center justify-start h-full max-w-[280px] bg-gray-100 rounded-lg p-3 w-full overflow-hidden"
+                            className="h-full max-w-[280px] pb-5 overflow-hidden"
                         >
-                            <div className="flex items-center justify-center flex-shrink-0">
+                            <div className="bg-gray-100 p-3 rounded-[8px] flex items-center justify-center w-full h-[260px]">
                                 <img
                                     src={product.images?.[0]}
                                     alt={product.name}
-                                    className="w-full h-full py-2 object-contain block mx-auto max-w-[250px] max-h-[250px] cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
+                                    className="w-full h-full py-2 object-contain block mx-auto max-w-[250px] max-h-[250px] max-md:max-w-[350px] max-md:max-h-[300px] cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out"
                                 />
                             </div>
 
-                            <div className="self-start w-full mt-2 px-5 flex-grow flex flex-col">
+                            <div className="px-4 py-2 ml-4">
                                 <div className="flex flex-wrap gap-1 mb-1">
                                     {product.Colors?.map((color, index) => (
                                         <button
