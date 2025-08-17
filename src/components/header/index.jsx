@@ -5,16 +5,26 @@ import flag from '../../assets/img/flags.jpg';
 import logos from '../../assets/img/stanleyLogo.png';
 import sidebarLogos from '../../assets/img/stanley-sidebar-logo.png';
 
-function Header() {
+function Header({ cart, setCart }) {
     const [categories, setCategories] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [expandedIndex, setExpandedIndex] = useState(null);
-    
+
+    const [cartOpen, setCartOpen] = useState(false);
+
     useEffect(() => {
         fetchCategories()
             .then(data => setCategories(data))
             .catch(err => console.error(err));
     }, []);
+
+    useEffect(() => {
+        if (cartOpen || sidebarOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+    }, [cartOpen, sidebarOpen]);
 
     const toggleExpand = (index) => {
         setExpandedIndex(expandedIndex === index ? null : index);
@@ -22,6 +32,7 @@ function Header() {
 
     return (
         <>
+        {/* ust hisse (black olan) */}
             <div className="bg-[#080807] z-10 relative">
                 <div className="container min-h-[44px] mx-auto px-5 flex items-center justify-between">
                     <Header1Slider />
@@ -56,6 +67,7 @@ function Header() {
                 </div>
             </div>
 
+            {/* Header */}
             <header className="py-4 px-[45px] max-sm:px-[35px] bg-[#fff] z-10 relative">
                 <div className="container flex justify-between h-[50px] mx-auto">
                     <a href="/" className="flex items-center p-2 text-black">
@@ -90,29 +102,25 @@ function Header() {
 
                         <div className="relative flex items-center max-lg:hidden">
                             <i className="fa-solid fa-magnifying-glass text-gray-600 pl-3 absolute left-0"></i>
-                            <input
-                                type="search"
-                                name="search"
-                                placeholder="What are you looking for?"
-                                className="pl-8 border rounded-lg border-black w-[380px] max-xl:w-[240px] max-w-full min-h-[46px] outline-none"
-                            />
+                            <input type="search" name="search" placeholder="What are you looking for?"
+                                className="pl-8 border rounded-lg border-black w-[380px] max-xl:w-[240px] max-w-full min-h-[46px] outline-none" />
                         </div>
 
                         <div className='text-[22px] dark:text-gray-700 flex items-center justify-center'>
-                            <i className="fa-solid fa-bag-shopping px-1"></i>
+                            <i
+                                className="fa-solid fa-bag-shopping px-1 cursor-pointer"
+                                onClick={() => setCartOpen(true)}
+                            ></i>
 
                             <button
                                 className="lg:hidden px-1"
-                                onClick={() => setSidebarOpen(true)}
-                                aria-label="Open menu"
-                            >
+                                onClick={() => setSidebarOpen(true)}>
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
-                                    className="w-6 h-6 dark:text-gray-800"
-                                >
+                                    className="w-6 h-6 dark:text-gray-800">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
                             </button>
@@ -122,16 +130,17 @@ function Header() {
             </header>
 
             <div className={`fixed inset-0 z-[999] bg-black bg-opacity-50 transition-opacity duration-300
-                 ${sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`} 
-                 onClick={() => setSidebarOpen(false)}></div>
+                 ${sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+                onClick={() => setSidebarOpen(false)}></div>
 
-                <aside className={`fixed top-0 right-0 bottom-0 left-0 bg-white shadow-lg p-6 overflow-y-auto transition-all duration-500 ease-in-out z-[1000]
+            <aside className={`fixed top-0 right-0 bottom-0 left-0 bg-white shadow-lg p-6 overflow-y-auto transition-all duration-500 ease-in-out z-[1000]
                        ${sidebarOpen ? "translate-x-0 opacity-100 w-full" : "translate-x-full opacity-0 w-0"}`}>
 
                 <button
-                    className="mb-6 text-gray-700 font-bold text-[30px]"
-                    onClick={() => setSidebarOpen(false)}
-                    aria-label="Close menu" >&times; </button>
+                    className="mb-6 text-gray-700 font-bold text-[20px]"
+                    onClick={() => setSidebarOpen(false)}>
+                    <i className="fa-solid fa-xmark"></i>
+                </button>
 
                 <div className="flex items-center justify-center">
                     <img className="w-[200px] max-md:w-[100px]" src={sidebarLogos} alt="img" />
@@ -194,6 +203,38 @@ function Header() {
                     </div>
                 </div>
             </aside>
+
+            <div
+                className={`fixed inset-0 z-[999] transition-opacity duration-300
+                    ${cartOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+                onClick={() => setCartOpen(false)}
+            ></div>
+
+            <aside className={`fixed top-0 right-0 h-full bg-white shadow-lg p-6 z-[1000] transition-all duration-500 ease-in-out
+        ${cartOpen ? "translate-x-0 opacity-100 w-1/2" : "translate-x-full opacity-0 w-0"}`}>
+                <button
+                    className="mb-6 text-gray-700 cursor-pointer font-bold text-[20px]"
+                    onClick={() => setCartOpen(false)}
+                >
+                    <i className="fa-solid fa-xmark"></i>
+                </button>
+
+                <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
+
+                {cart.length === 0 ? (
+                    <p>Cart is empty</p>
+                ) : (
+                    <ul>
+                        {cart.map((item, idx) => (
+                            <li key={idx} className="flex justify-between mb-2">
+                                <span>{item.name} x {item.quantity}</span>
+                                <span>${item.price * item.quantity}</span>
+                            </li>
+                        ))}
+                    </ul>
+                )}
+            </aside>
+
         </>
     );
 }

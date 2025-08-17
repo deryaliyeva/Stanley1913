@@ -4,7 +4,7 @@ import { fetchProductById } from "../../../services/api.js";
 import DetailsSlider from "./DetailsSlider";
 import "../../../index.css";
 
-function ProductPage() {
+function ProductPage({ cart, setCart }) {
     const { id } = useParams();
     const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -13,14 +13,11 @@ function ProductPage() {
 
     useEffect(() => {
         if (!id) return;
-
         setLoading(true);
         setError(null);
 
         fetchProductById(id)
-            .then((data) => {
-                setProduct(data);
-            })
+            .then((data) => setProduct(data))
             .catch((err) => setError(err.message || "Xəta baş verdi"))
             .finally(() => setLoading(false));
     }, [id]);
@@ -28,6 +25,17 @@ function ProductPage() {
     if (loading) return <p className="text-center py-10">Yüklənir...</p>;
     if (error) return <p className="text-center py-10 text-red-500">Xəta: {error}</p>;
     if (!product) return <p className="text-center py-10">Məhsul tapılmadı</p>;
+
+    const addToCart = () => {
+        const existsIndex = cart.findIndex(item => item.id === product.id);
+        if (existsIndex >= 0) {
+            const newCart = [...cart];
+            newCart[existsIndex].quantity += quantity;
+            setCart(newCart);
+        } else {
+            setCart([...cart, { id: product.id, name: product.name, price: product.price, quantity }]);
+        }
+    };
 
     return (
         <>
@@ -65,9 +73,7 @@ function ProductPage() {
                                     onChange={(e) => setQuantity(Number(e.target.value))}
                                 >
                                     {Array.from({ length: 20 }, (_, i) => (
-                                        <option key={i + 1} value={i + 1}>
-                                            {i + 1}
-                                        </option>
+                                        <option key={i + 1} value={i + 1}>{i + 1}</option>
                                     ))}
                                 </select>
                             </div>
@@ -76,7 +82,10 @@ function ProductPage() {
                             </div>
                         </div>
 
-                        <button className="bg-black border py-[14px] px-[32px] w-full cursor-pointer transition-all rounded-[5px] text-white hover:text-[#000] hover:bg-white">
+                        <button
+                            onClick={addToCart}
+                            className="bg-black border py-[14px] px-[32px] w-full cursor-pointer transition-all rounded-[5px] text-white hover:text-[#000] hover:bg-white"
+                        >
                             <span className="text-[16px] font-bold uppercase">Add to Cart</span>
                         </button>
                     </div>

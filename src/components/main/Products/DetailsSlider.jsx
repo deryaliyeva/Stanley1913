@@ -19,7 +19,6 @@ function DetailsSlider({ productId }) {
 
         fetchProductById(productId)
             .then((productData) => {
-                // Məhsul şəkillərindən variantlar yarat
                 const variantsData = productData.images.map((img, idx) => ({
                     id: idx,
                     name: `Image ${idx + 1}`,
@@ -34,7 +33,7 @@ function DetailsSlider({ productId }) {
     if (loading) return <p className="text-center py-10">Yüklənir...</p>;
     if (error) return <p className="text-center py-10 text-red-500">Xəta: {error}</p>;
 
-    if (variants.length <= 1) return null; // Variant 1-dən azdırsa heç nə göstərmə
+    if (variants.length <= 1) return null; 
 
     return (
         <>

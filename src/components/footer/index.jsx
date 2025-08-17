@@ -11,7 +11,6 @@ function Footer() {
     <>
       <footer className="bg-[#101010] text-white py-12 px-4">
         <div className="max-w-[1250px] mx-auto">
-          {/* Newsletter */}
           <section className="py-[48px]">
             <div className="space-y-8">
               <div className="text-center lg:text-left">
@@ -64,27 +63,21 @@ function Footer() {
             </div>
           </section>
 
-          {/* Footer Links */}
           <section className="flex items-center justify-between gap-2 text-[16px] max-lg:flex-wrap relative">
             <div className="flex items-center justify-between gap-5">
               <div className="flex flex-col max-md:flex-col md:flex-row items-center justify-between gap-5">
-                {/* Company */}
+                {/* Company olan hisse */}
                 <div className="w-full max-md:w-full">
                   <h3
                     className="mb-[32px] cursor-pointer select-none flex items-center justify-between max-md:w-full"
-                    onClick={() => setOpenCompany(!openCompany)}
-                  >
+                    onClick={() => setOpenCompany(!openCompany)}>
                     Company
-                    <i
-                      className={`fa-solid ml-2 transition-transform duration-300 max-md:block hidden ${openCompany ? "fa-chevron-up" : "fa-chevron-down"
-                        }`}
-                    ></i>
+                    <i className={`fa-solid ml-2 transition-transform duration-300 max-md:block hidden ${openCompany ? "fa-chevron-up" : "fa-chevron-down"
+                        }`}></i>
                   </h3>
 
-                  <ul
-                    className={`leading-[35px] transition-all duration-300 max-md:overflow-hidden max-md:px-2 ${openCompany ? "max-md:max-h-[500px] max-md:pt-2" : "max-md:max-h-0"
-                      } max-md:bg-[#101010] max-md:rounded-md max-md:mb-5`}
-                  >
+                  <ul className={`leading-[35px] transition-all duration-300 max-md:overflow-hidden max-md:px-2 ${openCompany ? "max-md:max-h-[500px] max-md:pt-2" : "max-md:max-h-0"
+                      } max-md:bg-[#101010] max-md:rounded-md max-md:mb-5`}>
                     <li className="hover:underline transition-all"><a href="#">About Stanley 1913</a></li>
                     <li className="hover:underline transition-all"><a href="#">Careers</a></li>
                     <li className="hover:underline transition-all"><a href="#">Meet the BearForce</a></li>
@@ -98,23 +91,18 @@ function Footer() {
                   </ul>
                 </div>
 
-                {/* Support */}
+                {/* Support olan hisse */}
                 <div className="w-full max-md:w-full">
                   <h3
                     className="mb-[32px] cursor-pointer select-none flex items-center justify-between max-md:w-full"
-                    onClick={() => setOpenSupport(!openSupport)}
-                  >
+                    onClick={() => setOpenSupport(!openSupport)}>
                     Support
-                    <i
-                      className={`fa-solid ml-2 transition-transform duration-300 max-md:block hidden ${openSupport ? "fa-chevron-up" : "fa-chevron-down"
-                        }`}
-                    ></i>
+                    <i className={`fa-solid ml-2 transition-transform duration-300 max-md:block hidden ${openSupport ? "fa-chevron-up" : "fa-chevron-down"
+                        }`}></i>
                   </h3>
 
-                  <ul
-                    className={`leading-[40px] transition-all duration-300 max-md:overflow-hidden max-md:px-2 ${openSupport ? "max-md:max-h-[500px] max-md:pt-2" : "max-md:max-h-0"
-                      } max-md:bg-[#101010] max-md:rounded-md`}
-                  >
+                  <ul className={`leading-[40px] transition-all duration-300 max-md:overflow-hidden max-md:px-2 ${openSupport ? "max-md:max-h-[500px] max-md:pt-2" : "max-md:max-h-0"
+                      } max-md:bg-[#101010] max-md:rounded-md`}>
                     <li className="hover:underline transition-all"><a href="#">FAQ</a></li>
                     <li className="hover:underline transition-all"><a href="#">Contact Us</a></li>
                     <li className="hover:underline transition-all"><a href="#">Returns</a></li>
@@ -127,7 +115,6 @@ function Footer() {
               </div>
             </div>
 
-            {/* Footer Image */}
             <div className="relative flex items-center justify-center max-lg:justify-start">
               <img className="max-w-[80%] min-h-[50%] rounded-[5px]" src={footerImg} alt="img" />
               <button className="absolute left-25 max-lg:left-8 max-md:left-5 bottom-5 flex text-[16px] max-sm:text-[8px] uppercase font-bold tracking-[1px] items-center gap-2 px-6 py-3 bg-black text-white border border-black rounded-md transition-all duration-300 hover:bg-white hover:text-black">
@@ -137,7 +124,6 @@ function Footer() {
             </div>
           </section>
 
-          {/* Social Icons */}
           <div className="max-w-[200px] my-[60px]">
             <ul className="flex items-center justify-between gap-2 text-[16px]">
               <li><a href="#"><i className="fa-brands fa-tiktok"></i></a></li>
@@ -147,7 +133,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Bottom Footer */}
           <div className="flex flex-wrap justify-between items-start py-6 border-t border-gray-300 text-sm">
             <div className="flex flex-wrap items-start gap-8">
               <div className="flex flex-col gap-1 whitespace-nowrap">
@@ -164,7 +149,6 @@ function Footer() {
                     <a href="/pages/consumer-rights-privacy-form" className="hover:underline focus:outline-none flex items-center gap-1">
                       Your Privacy Choices
                       <span className="w-[30px] h-[14px]">
-                        {/* SVG Icon */}
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 14">
                           <path fill="#fff" fillRule="evenodd" d="M7.4 12.8h6.8l3.1-11.6H7.4C4.2 1.2 1.6 3.8 1.6 7s2.6 5.8 5.8 5.8z" clipRule="evenodd" />
                           <path fill="#06f" fillRule="evenodd" d="M22.6 0H7.4c-3.9 0-7 3.1-7 7s3.1 7 7 7h15.2c3.9 0 7-3.1 7-7s-3.2-7-7-7zm-21 7c0-3.2 2.6-5.8 5.8-5.8h9.9l-3.1 11.6H7.4c-3.2 0-5.8-2.6-5.8-5.8z" clipRule="evenodd" />
@@ -180,7 +164,6 @@ function Footer() {
               </nav>
             </div>
 
-            {/* Flag */}
             <div className="mt-4 md:mt-0">
               <div className='text-[#fff] mr-[28px] flex items-center justify-center'>
                 <a href="#">
