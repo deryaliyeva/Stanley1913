@@ -32,7 +32,7 @@ function Header({ cart, setCart }) {
 
     return (
         <>
-        {/* ust hisse (black olan) */}
+            {/* ust hisse (black olan) */}
             <div className="bg-[#080807] z-10 relative">
                 <div className="container min-h-[44px] mx-auto px-5 flex items-center justify-between">
                     <Header1Slider />
@@ -152,16 +152,24 @@ function Header({ cart, setCart }) {
                             <li key={category.id} className="mb-4">
                                 <button
                                     className="w-full text-left font-semibold text-lg flex justify-between items-center"
-                                    onClick={() => toggleExpand(idx)}>
+                                    onClick={() => toggleExpand(idx)}
+                                >
                                     {category.name}
-                                    <span className={`transform transition-transform duration-300 ${expandedIndex === idx ? "rotate-90" : ""}`}> ▶ </span>
+                                    {expandedIndex === idx ? (
+                                        <i className="fa-solid fa-sort-down transition-transform duration-300"></i>
+                                    ) : (
+                                        <i className="fa-solid fa-caret-right transition-transform duration-300"></i>
+                                    )}
                                 </button>
                                 {expandedIndex === idx && (
                                     <ul className="mt-2 ml-4 flex flex-col space-y-1">
                                         {category.Subcategory?.map((sub) => (
                                             <li key={sub.id}>
-                                                <a href={`/${category.slug}/${sub.slug}`}
-                                                    className="block px-2 py-1 text-gray-700 hover:text-red-600"> {sub.name}
+                                                <a
+                                                    href={`/${category.slug}/${sub.slug}`}
+                                                    className="block px-2 py-1 text-gray-700 hover:text-red-600"
+                                                >
+                                                    {sub.name}
                                                 </a>
                                             </li>
                                         ))}
@@ -171,6 +179,7 @@ function Header({ cart, setCart }) {
                         ))}
                     </ul>
                 </nav>
+
 
                 <div className="my-6 px-5 py-3 text-black">
                     <div className="text-[17px] flex flex-col md:flex-row items-start md:items-center justify-between">
