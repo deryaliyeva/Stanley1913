@@ -77,7 +77,7 @@ function Header({ cart, setCart }) {
                         <ul className="flex space-x-6 p-4 font-bold text-[15px] uppercase max-lg:hidden">
                             {categories.map((category) => (
                                 <li key={category.id} className="relative group">
-                                    <a href={`/${category.slug}`} className="cursor-pointer">{category.name}</a>
+                                    <a href="#" className="cursor-pointer">{category.name}</a>
                                     <div className=" absolute left-0 top-full bg-white w-[300px] max-h-[500px] overflow-y-auto shadow-lg border border-gray-200 mt-1 rounded p-4 z-50 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-300 ">
                                         <ul className="flex flex-col space-y-2">
                                             {category.Subcategory?.map((sub) => (
