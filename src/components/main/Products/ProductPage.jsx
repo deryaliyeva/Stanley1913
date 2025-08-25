@@ -22,9 +22,9 @@ function ProductPage({ cart, setCart }) {
             .finally(() => setLoading(false));
     }, [id]);
 
-    if (loading) return <p className="text-center py-10">Yüklənir...</p>;
-    if (error) return <p className="text-center py-10 text-red-500">Xəta: {error}</p>;
-    if (!product) return <p className="text-center py-10">Məhsul tapılmadı</p>;
+    if (loading) return <div className="flex items-center justify-center my-10">
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin text-red-700"></div>
+    </div>;
 
     const addToCart = () => {
         const existsIndex = cart.findIndex(item => item.id === product.id);
@@ -33,8 +33,8 @@ function ProductPage({ cart, setCart }) {
             newCart[existsIndex].quantity += quantity;
             setCart(newCart);
         } else {
-            setCart([...cart, { id: product.id, name: product.name, price: product.price, quantity }]);
-        }
+            setCart([ ...cart, {id: product.id,name: product.name,price: product.price,quantity,image: product.images[0],  brand: product.brand || "Brand" } 
+        ])}
     };
 
     return (
@@ -70,8 +70,7 @@ function ProductPage({ cart, setCart }) {
                                     className="ml-2"
                                     id="selectId"
                                     value={quantity}
-                                    onChange={(e) => setQuantity(Number(e.target.value))}
-                                >
+                                    onChange={(e) => setQuantity(Number(e.target.value))}>
                                     {Array.from({ length: 20 }, (_, i) => (
                                         <option key={i + 1} value={i + 1}>{i + 1}</option>
                                     ))}

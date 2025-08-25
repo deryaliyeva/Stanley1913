@@ -30,10 +30,11 @@ function DetailsSlider({ productId }) {
             .finally(() => setLoading(false));
     }, [productId]);
 
-    if (loading) return <p className="text-center py-10">Yüklənir...</p>;
-    if (error) return <p className="text-center py-10 text-red-500">Xəta: {error}</p>;
+    if (loading) return <div className="flex items-center justify-center my-10">
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin text-red-700"></div>
+    </div>;
 
-    if (variants.length <= 1) return null; 
+    if (variants.length <= 1) return null;
 
     return (
         <>
