@@ -155,25 +155,20 @@ function Header({ cart, setCart }) {
                 </div>
 
             </aside>
-
-            {/* Cart fonu */}
             <div
                 className={`fixed inset-0 z-[999] transition-all duration-500
       ${cartOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"}`}
                 onClick={() => setCartOpen(false)}
             ></div>
 
-            {/* Cart özü */}
             <aside className={`fixed top-0 right-0 h-full bg-white shadow-lg p-6 z-[1000] transition-all duration-500 ease-in-out flex flex-col
     ${cartOpen ? "translate-x-0 opacity-100 w-1/2 max-md:w-full" : "translate-x-full opacity-0 w-0"}`}>
 
-                {/* X icon sol küncdə */}
                 <div className="flex justify-between items-center mb-6">
                     <button className="text-gray-700 cursor-pointer font-bold text-[20px]" onClick={() => setCartOpen(false)}>
                         <i className="fa-solid fa-xmark"></i>
                     </button>
 
-                    {/* Delete All düyməsi */}
                     {cart.length > 0 && (
                         <button
                             className="text-red-600 hover:text-red-800 font-bold text-[14px]"
