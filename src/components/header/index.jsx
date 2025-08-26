@@ -10,6 +10,7 @@ function Header({ cart, setCart }) {
     const [categories, setCategories] = useState([]);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
+    const [expandedCategory, setExpandedCategory] = useState(null);
 
     useEffect(() => {
         fetchCategories()
@@ -92,11 +93,12 @@ function Header({ cart, setCart }) {
             </header>
 
             <div className={`fixed inset-0 z-[999] bg-black bg-opacity-50 transition-opacity duration-300
-        ${sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+                ${sidebarOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
                 onClick={() => setSidebarOpen(false)}></div>
 
             <aside className={`fixed top-0 right-0 bottom-0 left-0 bg-white shadow-lg p-6 overflow-y-auto transition-all duration-500 ease-in-out z-[1000]
-        ${sidebarOpen ? "translate-x-0 opacity-100 w-full" : "translate-x-full opacity-0 w-0"}`}>
+                ${sidebarOpen ? "translate-x-0 opacity-100 w-full max-md:w-full" : "translate-x-full opacity-0 w-0"}`}>
+
                 <button className="mb-6 text-gray-700 font-bold text-[20px]" onClick={() => setSidebarOpen(false)}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
@@ -109,26 +111,27 @@ function Header({ cart, setCart }) {
                     <ul>
                         {categories.map((category) => (
                             <li key={`cat-${category.id}`} className="mb-2">
-                                <details className="group">
-                                    <summary className="cursor-pointer px-4 py-2 font-bold hover:text-red-600">
-                                        {category.name}
-                                    </summary>
-                                    {category.Subcategory && (
-                                        <ul className="pl-4 mt-1 flex flex-col space-y-1">
-                                            {category.Subcategory.map((sub) => (
-                                                <li key={`sub-${sub.id}`}>
-                                                    <Link
-                                                        to={`/category/${category.slug}/${sub.slug}`}
-                                                        className="block px-2 py-1 text-gray-700 hover:text-red-600"
-                                                        onClick={() => setSidebarOpen(false)}
-                                                    >
-                                                        {sub.name}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    )}
-                                </details>
+                                <div
+                                    className="px-4 py-2 font-bold cursor-pointer hover:text-red-600"
+                                    onClick={() => setExpandedCategory(expandedCategory === category.id ? null : category.id)}
+                                >
+                                    {category.name}
+                                </div>
+                                {category.Subcategory && expandedCategory === category.id && (
+                                    <ul className="pl-4 mt-1 flex flex-col space-y-1">
+                                        {category.Subcategory.map((sub) => (
+                                            <li key={`sub-${sub.id}`}>
+                                                <Link
+                                                    to={`/category/${category.slug}/${sub.slug}`}
+                                                    className="block px-2 py-1 text-gray-700 hover:text-red-600"
+                                                    onClick={() => setSidebarOpen(false)}
+                                                >
+                                                    {sub.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
                             </li>
                         ))}
                     </ul>
@@ -136,11 +139,11 @@ function Header({ cart, setCart }) {
             </aside>
 
             <div className={`fixed inset-0 z-[999] transition-opacity duration-300
-        ${cartOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+                ${cartOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
                 onClick={() => setCartOpen(false)}></div>
 
             <aside className={`fixed top-0 right-0 h-full bg-white shadow-lg p-6 z-[1000] transition-all duration-500 ease-in-out
-        ${cartOpen ? "translate-x-0 opacity-100 w-1/2" : "translate-x-full opacity-0 w-0"}`}>
+                ${cartOpen ? "translate-x-0 opacity-100 w-1/2 max-md:w-full" : "translate-x-full opacity-0 w-0"}`}>
                 <button className="mb-6 text-gray-700 cursor-pointer font-bold text-[20px]" onClick={() => setCartOpen(false)}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
@@ -177,7 +180,6 @@ function Header({ cart, setCart }) {
                             </li>
                         ))}
                     </ul>
-
                 )}
             </aside>
         </>
