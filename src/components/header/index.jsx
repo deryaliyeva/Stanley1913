@@ -32,21 +32,12 @@ function Header({ cart, setCart }) {
 
                         <div className='mr-[28px]'>
                             {!localStorage.getItem("token") && (
-                                <Link to="/SignIn" className="flex items-center">
-                                    <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </Link>
-                            )}
-
-                            {/* Sign Out */}
-                            {localStorage.getItem("token") && (
-                                <Link
-                                    to="/"
-                                    onClick={() => localStorage.removeItem("token")} // token silinir
-                                    className="flex items-center"
-                                >
-                                    <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </Link>
-                            )}
+                                <Link to="/SignIn"
+                                    className="flex items-center"> <i className="fa-regular fa-user mr-1">
+                                    </i>Sign In | Sign Up </Link>)} {/* Sign Out */} {localStorage.getItem("token") && (
+                                        <Link to="/" onClick={() => localStorage.removeItem("token")}
+                                            className="flex items-center" >
+                                            <i className="fa-regular fa-user mr-1"></i>Sign Out </Link>)}
                         </div>
 
                         <div className='mr-[28px]'><a href="#">Support</a></div>
@@ -164,23 +155,14 @@ function Header({ cart, setCart }) {
                 <div className="mt-10 flex items-center">
                     <div className='text-[#101010] font-[500] text-[17px]'>
                         <div className='mr-[28px] leading-10'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
-                        <div className='mr-[28px] leading-10'>
+                        <div className='mr-[28px]'>
                             {!localStorage.getItem("token") && (
-                                <Link to="/SignIn" className="flex items-center">
-                                    <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </Link>
-                            )}
-
-                            {/* Sign Out */}
-                            {localStorage.getItem("token") && (
-                                <Link
-                                    to="/"
-                                    onClick={() => localStorage.removeItem("token")} // token silinir
-                                    className="flex items-center"
-                                >
-                                    <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </Link>
-                            )}
+                                <Link to="/SignIn"
+                                    className="flex items-center"> <i className="fa-regular fa-user mr-1">
+                                    </i>Sign In | Sign Up </Link>)} {/* Sign Out */} {localStorage.getItem("token") && (
+                                        <Link to="/" onClick={() => localStorage.removeItem("token")}
+                                            className="flex items-center" >
+                                            <i className="fa-regular fa-user mr-1"></i>Sign Out </Link>)}
                         </div>
                         <div className='mr-[28px] leading-10'><a href="#">Support</a></div>
                         <div className='text-[#101010] flex items-center'>
@@ -189,7 +171,6 @@ function Header({ cart, setCart }) {
                         </div>
                     </div>
                 </div>
-
             </aside>
             <div
                 className={`fixed inset-0 z-[999] transition-all duration-500
