@@ -31,21 +31,29 @@ function Header({ cart, setCart }) {
                         <div className='mr-[28px]'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
 
                         <div className='mr-[28px]'>
+                            {/* Sign In */}
                             {!localStorage.getItem("token") && (
-                                <Link to="/SignIn" className="flex items-center">
+                                <button
+                                    onClick={() => {
+                                        window.location.href = "/SignIn"; // SignIn səhifəsinə yönləndir
+                                    }}
+                                    className="flex items-center"
+                                >
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </Link>
+                                </button>
                             )}
 
                             {/* Sign Out */}
                             {localStorage.getItem("token") && (
-                                <Link
-                                    to="/"
-                                    onClick={() => localStorage.removeItem("token")} // token silinir
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem("token"); // token silinir
+                                        window.location.href = "/";       // ana səhifəyə yönləndir
+                                    }}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </Link>
+                                </button>
                             )}
                         </div>
 
@@ -165,22 +173,31 @@ function Header({ cart, setCart }) {
                     <div className='text-[#101010] font-[500] text-[17px]'>
                         <div className='mr-[28px] leading-10'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
                         <div className='mr-[28px] leading-10'>
+                            {/* Sign In */}
                             {!localStorage.getItem("token") && (
-                                <Link to="/SignIn" className="flex items-center">
+                                <button
+                                    onClick={() => {
+                                        window.location.href = "/SignIn"; // SignIn səhifəsinə yönləndir
+                                    }}
+                                    className="flex items-center"
+                                >
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </Link>
+                                </button>
                             )}
 
                             {/* Sign Out */}
                             {localStorage.getItem("token") && (
-                                <Link
-                                    to="/"
-                                    onClick={() => localStorage.removeItem("token")} // token silinir
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem("token"); // token silinir
+                                        window.location.href = "/";       // ana səhifəyə yönləndir
+                                    }}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </Link>
+                                </button>
                             )}
+
                         </div>
                         <div className='mr-[28px] leading-10'><a href="#">Support</a></div>
                         <div className='text-[#101010] flex items-center'>
