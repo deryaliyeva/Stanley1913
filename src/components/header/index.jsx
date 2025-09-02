@@ -35,14 +35,14 @@ function Header({ cart, setCart }) {
                                 <button
                                     onClick={() => {
                                         localStorage.removeItem("token");  // token silinir
-                                        window.location.href = "/signin";  // login səhifəsinə yönləndir
+                                        window.location.href = "/";  // login səhifəsinə yönləndir
                                     }}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
                                 </button>
                             ) : (
-                                <a href="/signin" className="flex items-center">
+                                <a href="/" className="flex items-center">
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
                                 </a>
                             )}
@@ -168,14 +168,14 @@ function Header({ cart, setCart }) {
                                 <button
                                     onClick={() => {
                                         localStorage.removeItem("token"); // token silinir
-                                        window.location.href = "/signin"; // login səhifəsinə yönləndir
+                                        window.location.href = "/"; // login səhifəsinə yönləndir
                                     }}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
                                 </button>
                             ) : (
-                                <a href="/signin" className="flex items-center">
+                                <a href="/" className="flex items-center">
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
                                 </a>
                             )}
