@@ -31,24 +31,21 @@ function Header({ cart, setCart }) {
                         <div className='mr-[28px]'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
 
                         <div className='mr-[28px]'>
-                            {/* Sign In */}
                             {!localStorage.getItem("token") && (
-                                <a href="/signin" className="flex items-center">
+                                <Link to="/SignIn" className="flex items-center">
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </a>
+                                </Link>
                             )}
 
                             {/* Sign Out */}
                             {localStorage.getItem("token") && (
-                                <button
-                                    onClick={() => {
-                                        localStorage.removeItem("token"); // token silinir
-                                        window.location.href = "/";       // ana səhifəyə yönləndir
-                                    }}
+                                <Link
+                                    to="/"
+                                    onClick={() => localStorage.removeItem("token")} // token silinir
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </button>
+                                </Link>
                             )}
                         </div>
 
@@ -168,24 +165,21 @@ function Header({ cart, setCart }) {
                     <div className='text-[#101010] font-[500] text-[17px]'>
                         <div className='mr-[28px] leading-10'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
                         <div className='mr-[28px] leading-10'>
-                            {/* Sign In */}
                             {!localStorage.getItem("token") && (
-                                <a href="/signin" className="flex items-center">
+                                <Link to="/SignIn" className="flex items-center">
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </a>
+                                </Link>
                             )}
 
                             {/* Sign Out */}
                             {localStorage.getItem("token") && (
-                                <button
-                                    onClick={() => {
-                                        localStorage.removeItem("token"); // token silinir
-                                        window.location.href = "/";       // ana səhifəyə yönləndir
-                                    }}
+                                <Link
+                                    to="/"
+                                    onClick={() => localStorage.removeItem("token")} // token silinir
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </button>
+                                </Link>
                             )}
                         </div>
                         <div className='mr-[28px] leading-10'><a href="#">Support</a></div>
