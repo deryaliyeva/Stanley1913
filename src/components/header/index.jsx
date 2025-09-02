@@ -100,7 +100,7 @@ function Header({ cart, setCart }) {
                         </div>
 
                         {/* Sidebar açmaq üçün button */}
-                        <div className="lg:hidden flex items-center order-2"> {/* indi sağda */}
+                        <div className="lg:hidden flex items-center order-2">
                             <button onClick={() => setSidebarOpen(true)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6 text-gray-800">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -109,7 +109,7 @@ function Header({ cart, setCart }) {
                         </div>
 
                         {/* Cart ikonu */}
-                        <div className='text-[22px] dark:text-gray-700 flex items-center justify-center order-1'> {/* indi solda */}
+                        <div className='text-[22px] dark:text-gray-700 flex items-center justify-center order-1'>
                             <i className="fa-solid fa-bag-shopping px-1 cursor-pointer" onClick={() => setCartOpen(true)}></i>
                         </div>
                     </div>
@@ -163,7 +163,23 @@ function Header({ cart, setCart }) {
                 <div className="mt-10 flex items-center">
                     <div className='text-[#101010] font-[500] text-[17px]'>
                         <div className='mr-[28px] leading-10'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
-                        <div className='mr-[28px] leading-10'><a href="#"><i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up</a></div>
+                        <div className='mr-[28px] leading-10'>
+                            {localStorage.getItem("token") ? (
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem("token"); // token silinir
+                                        window.location.href = "/signin"; // login səhifəsinə yönləndir
+                                    }}
+                                    className="flex items-center"
+                                >
+                                    <i className="fa-regular fa-user mr-1"></i>Sign Out
+                                </button>
+                            ) : (
+                                <a href="/signin" className="flex items-center">
+                                    <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
+                                </a>
+                            )}
+                        </div>
                         <div className='mr-[28px] leading-10'><a href="#">Support</a></div>
                         <div className='text-[#101010] flex items-center'>
                             <a href="#">USA <i className="fa-solid fa-angle-down ml-1"></i></a>
