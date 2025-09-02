@@ -25,7 +25,7 @@ function App() {
         <Route path="/product/:id" element={<ProductPage cart={cart} setCart={setCart} />} />
         <Route path="/category/:mainSlug/:subSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
         <Route path="/category/:mainSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
-        <Route path="/signin" element={<SignIn />} /> 
+        <Route path="/signin" element={<SignIn />} />
       </Routes>
       <Footer />
     </Router>
