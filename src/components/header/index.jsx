@@ -29,7 +29,25 @@ function Header({ cart, setCart }) {
                     <Header1Slider />
                     <div className='text-[#fff] font-normal text-[14px] flex items-center justify-between max-lg:hidden'>
                         <div className='mr-[28px]'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
-                        <div className='mr-[28px]'><a href="#"><i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up</a></div>
+
+                        <div className='mr-[28px]'>
+                            {localStorage.getItem("token") ? (
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem("token");  // token silinir
+                                        window.location.href = "/signin";  // login səhifəsinə yönləndir
+                                    }}
+                                    className="flex items-center"
+                                >
+                                    <i className="fa-regular fa-user mr-1"></i>Sign Out
+                                </button>
+                            ) : (
+                                <a href="/signin" className="flex items-center">
+                                    <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
+                                </a>
+                            )}
+                        </div>
+
                         <div className='mr-[28px]'><a href="#">Support</a></div>
                         <div className='text-[#fff] mr-[28px] flex items-center justify-center'>
                             <a href="#">USA <i className="fa-solid fa-angle-down ml-1"></i></a>

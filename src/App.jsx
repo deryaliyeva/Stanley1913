@@ -5,6 +5,7 @@ import Header from './components/header';
 import Main from './components/main';
 import ProductPage from './components/main/Products/ProductPage';
 import CategoryPage from "./components/main/Category/CategoryPage";
+import SignIn from './components/login/SignIn';
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -24,6 +25,7 @@ function App() {
         <Route path="/product/:id" element={<ProductPage cart={cart} setCart={setCart} />} />
         <Route path="/category/:mainSlug/:subSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
         <Route path="/category/:mainSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
+        <Route path="/signin" element={<SignIn />} /> 
       </Routes>
       <Footer />
     </Router>
