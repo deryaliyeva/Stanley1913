@@ -32,19 +32,17 @@ function Header({ cart, setCart }) {
 
                         <div className='mr-[28px]'>
                             {localStorage.getItem("token") ? (
-                                <button
-                                    onClick={() => {
-                                        localStorage.removeItem("token");  // token silinir
-                                        window.location.href = "/";  // login səhifəsinə yönləndir
-                                    }}
+                                <Link
+                                    to="/"
+                                    onClick={() => localStorage.removeItem("token")}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </button>
+                                </Link>
                             ) : (
-                                <a href="/" className="flex items-center">
+                                <Link to="/signin" className="flex items-center">
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </a>
+                                </Link>
                             )}
                         </div>
 
@@ -165,19 +163,17 @@ function Header({ cart, setCart }) {
                         <div className='mr-[28px] leading-10'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
                         <div className='mr-[28px] leading-10'>
                             {localStorage.getItem("token") ? (
-                                <button
-                                    onClick={() => {
-                                        localStorage.removeItem("token"); // token silinir
-                                        window.location.href = "/"; // login səhifəsinə yönləndir
-                                    }}
+                                <Link
+                                    to="/"
+                                    onClick={() => localStorage.removeItem("token")}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
-                                </button>
+                                </Link>
                             ) : (
-                                <a href="/" className="flex items-center">
+                                <Link to="/signin" className="flex items-center">
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
-                                </a>
+                                </Link>
                             )}
                         </div>
                         <div className='mr-[28px] leading-10'><a href="#">Support</a></div>
