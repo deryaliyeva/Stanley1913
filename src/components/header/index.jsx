@@ -34,9 +34,7 @@ function Header({ cart, setCart }) {
                             {/* Sign In */}
                             {!localStorage.getItem("token") && (
                                 <button
-                                    onClick={() => {
-                                        window.location.href = "/SignIn"; // SignIn səhifəsinə yönləndir
-                                    }}
+                                    onClick={() => window.location.href = "/SignIn"}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
@@ -47,8 +45,8 @@ function Header({ cart, setCart }) {
                             {localStorage.getItem("token") && (
                                 <button
                                     onClick={() => {
-                                        localStorage.removeItem("token"); // token silinir
-                                        window.location.href = "/";       // ana səhifəyə yönləndir
+                                        localStorage.removeItem("token");
+                                        window.location.href = "/";
                                     }}
                                     className="flex items-center"
                                 >
@@ -172,13 +170,12 @@ function Header({ cart, setCart }) {
                 <div className="mt-10 flex items-center">
                     <div className='text-[#101010] font-[500] text-[17px]'>
                         <div className='mr-[28px] leading-10'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
-                        <div className='mr-[28px] leading-10'>
+
+                        <div className='mr-[28px]'>
                             {/* Sign In */}
                             {!localStorage.getItem("token") && (
                                 <button
-                                    onClick={() => {
-                                        window.location.href = "/SignIn"; // SignIn səhifəsinə yönləndir
-                                    }}
+                                    onClick={() => window.location.href = "/SignIn"}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign In | Sign Up
@@ -189,16 +186,16 @@ function Header({ cart, setCart }) {
                             {localStorage.getItem("token") && (
                                 <button
                                     onClick={() => {
-                                        localStorage.removeItem("token"); // token silinir
-                                        window.location.href = "/";       // ana səhifəyə yönləndir
+                                        localStorage.removeItem("token");
+                                        window.location.href = "/";
                                     }}
                                     className="flex items-center"
                                 >
                                     <i className="fa-regular fa-user mr-1"></i>Sign Out
                                 </button>
                             )}
-
                         </div>
+
                         <div className='mr-[28px] leading-10'><a href="#">Support</a></div>
                         <div className='text-[#101010] flex items-center'>
                             <a href="#">USA <i className="fa-solid fa-angle-down ml-1"></i></a>
