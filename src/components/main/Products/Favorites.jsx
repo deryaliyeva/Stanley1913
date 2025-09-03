@@ -10,7 +10,7 @@ function Favorites() {
     return (
         <div className="py-[48px] px-4 max-w-[1280px] mx-auto">
             <h2 className="text-[32px] text-[#101010] font-bold uppercase tracking-[1.8px] pb-5">
-                Stanley Favorites
+            Favorite brands
             </h2>
 
             <style>{`

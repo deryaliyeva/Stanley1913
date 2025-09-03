@@ -72,8 +72,7 @@ function Footer() {
                     className="mb-[32px] cursor-pointer select-none flex items-center justify-between max-md:w-full"
                     onClick={() => setOpenCompany(!openCompany)}>
                     Company
-                    <i className={`fa-solid ml-2 transition-transform duration-300 max-md:block hidden ${openCompany ? "fa-chevron-up" : "fa-chevron-down"
-                        }`}></i>
+                    <i className={`fa-solid ml-2 transition-transform duration-300 md:hidden ${openCompany ? "fa-chevron-up" : "fa-chevron-down"}`}></i>
                   </h3>
 
                   <ul className={`leading-[35px] transition-all duration-300 max-md:overflow-hidden max-md:px-2 ${openCompany ? "max-md:max-h-[500px] max-md:pt-2" : "max-md:max-h-0"
@@ -97,8 +96,7 @@ function Footer() {
                     className="mb-[32px] cursor-pointer select-none flex items-center justify-between max-md:w-full"
                     onClick={() => setOpenSupport(!openSupport)}>
                     Support
-                    <i className={`fa-solid ml-2 transition-transform duration-300 max-md:block hidden ${openSupport ? "fa-chevron-up" : "fa-chevron-down"
-                        }`}></i>
+                    <i className={`fa-solid ml-2 transition-transform duration-300 md:hidden ${openSupport ? "fa-chevron-up" : "fa-chevron-down"}`}></i>
                   </h3>
 
                   <ul className={`leading-[40px] transition-all duration-300 max-md:overflow-hidden max-md:px-2 ${openSupport ? "max-md:max-h-[500px] max-md:pt-2" : "max-md:max-h-0"
@@ -180,3 +178,4 @@ function Footer() {
   )
 }
 export default Footer;
+
