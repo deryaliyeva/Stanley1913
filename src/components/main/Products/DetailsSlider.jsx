@@ -31,7 +31,7 @@ function DetailsSlider({ productId }) {
     }, [productId]);
 
     if (loading) return <div className="flex items-center justify-center my-10">
-        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin text-red-700"></div>
+        <div className="w-40 h-40 border-4 border-dashed rounded-full animate-spin text-red-700"></div>
     </div>;
 
     if (variants.length <= 1) return null;
