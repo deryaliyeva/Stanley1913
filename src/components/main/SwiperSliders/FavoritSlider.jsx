@@ -43,10 +43,6 @@ function FavoritSlider() {
 
 
             <Swiper
-                data-aos="fade-left"
-                data-aos-anchor="#example-anchor"
-                data-aos-offset="1000"
-                data-aos-duration="1500"
                 slidesPerView={4}
                 spaceBetween={20}
                 pagination={{ clickable: true }}

@@ -81,10 +81,6 @@ function CollectionSlider() {
             >
                 {products.map((product) => (
                     <SwiperSlide
-                        data-aos="fade-left"
-                        data-aos-anchor="#example-anchor"
-                        data-aos-offset="1000"
-                        data-aos-duration="1500"
                         className="flex items-center justify-center h-full bg-gray-100 rounded-lg" key={product.id}>
                         <Link to={`/product/${product.id}`}
                             className="h-full max-w-[280px] pb-5 overflow-hidden"
