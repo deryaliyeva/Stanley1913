@@ -204,12 +204,10 @@ function Header({ cart, setCart }) {
                         <i className="fa-solid fa-xmark"></i>
                     </button>
 
-                    {cart.length > 0 && (
-                        <button
-                            className="text-red-600 hover:text-red-800 font-bold text-[14px]"
-                            onClick={() => setCart([])}> Delete All
-                        </button>
-                    )}
+                    {cart.length > 0
+                        ? (<button className="text-red-600 hover:text-red-800 font-bold text-[14px]" onClick={() => setCart([])} >Delete All </button>)
+                        : null
+                    }
                 </div>
 
                 <h1 className="text-2xl font-bold mb-4">Your Card</h1>

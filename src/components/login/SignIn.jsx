@@ -61,8 +61,7 @@ export default function SignIn() {
                             <button
                                 type="button"
                                 onClick={handleLogin}
-                                className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50"
-                            >
+                                className="w-full px-8 py-3 font-semibold rounded-md dark:bg-violet-600 dark:text-gray-50" >
                                 Sign in
                             </button>
                         </div>
