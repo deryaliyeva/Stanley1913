@@ -18,7 +18,7 @@ export default function SignIn() {
 
     return (
         <div className="h-[90vh] flex justify-center items-center dark:bg-gray-50">
-            <div className="flex flex-col w-[600px] h-[700px] p-6 rounded-md sm:p-10 dark:text-gray-800 bg-white shadow-lg">
+            <div className="flex flex-col w-[500px] h-[500px] p-6 rounded-md sm:p-10 dark:text-gray-800 bg-white shadow-lg">
                 <div className="mb-8 text-center">
                     <h1 className="my-3 text-4xl font-bold">Sign in</h1>
                     <p className="text-sm dark:text-gray-600">Sign in to access your account</p>
