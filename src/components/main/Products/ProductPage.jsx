@@ -22,8 +22,8 @@ function ProductPage({ cart, setCart }) {
             .finally(() => setLoading(false));
     }, [id]);
 
-    if (loading) return <div className="flex items-center justify-center my-10">
-        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin text-red-700"></div>
+    if (loading) return <div className="flex items-center justify-center my-10 h-[90vh]">
+        <div className="w-20 h-20 border-4 border-dashed rounded-full animate-spin text-red-900"></div>
     </div>;
 
     const addToCart = () => {

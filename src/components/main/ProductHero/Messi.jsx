@@ -1,5 +1,6 @@
-import logoPng from "../../../assets/img/messi-stanley-logo.avif";
+import { Link } from "react-router-dom";
 import messi from "../../../assets/img/messi.jpg";
+import logoPng from "../../../assets/img/messi-stanley-logo.avif";
 
 function Messi() {
     return (
@@ -18,9 +19,11 @@ function Messi() {
                     <p className="text-[15px] font-[500] tracking-[1px] max-md:tracking-[0.5px] mt-1 max-sm:mt-5 max-sm:leading-[20px]">
                         The new Messi x Stanley 1913 Collection just landed.
                     </p>
-                    <button className="bg-[#c39533] w-[164px] h-[48px] py-[14px] px-[32px] text-[15px] rounded-[7px] font-extrabold text-[#101010] mt-[32px] tracking-[1px] hover:bg-[#fff] cursor-pointer transition-all">
-                        SHOP NOW
-                    </button>
+                    <Link to="/messi-shop">
+                        <button className="bg-[#c39533] w-[164px] h-[48px] py-[14px] px-[32px] text-[15px] rounded-[7px] font-extrabold text-[#101010] mt-[32px] tracking-[1px] hover:bg-[#fff] cursor-pointer transition-all">
+                            SHOP NOW
+                        </button>
+                    </Link>
                 </div>
             </div>
         </>
