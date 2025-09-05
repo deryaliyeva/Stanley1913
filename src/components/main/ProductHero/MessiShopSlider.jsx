@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules"; 
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
@@ -7,18 +7,22 @@ const slides = [
     {
         id: 1,
         desktopSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-desktop_1_bb0aaab2-a464-487f-bcc8-acb40dbaa258.jpg?format=pjpg&v=1752220276&width=2048",
+        mobileSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-mobile_1.jpg?format=pjpg&v=1752220276&width=768",
     },
     {
         id: 2,
         desktopSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-desktop_2.jpg?format=pjpg&v=1752220276&width=2048",
+        mobileSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-mobile_2.jpg?format=pjpg&v=1752220276&width=768",
     },
     {
         id: 3,
         desktopSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-desktop_3_9ab021c1-f584-446c-8f56-7cc32b30ec0c.jpg?format=pjpg&v=1752220276&width=2048",
+        mobileSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-mobile_3.jpg?format=pjpg&v=1752220276&width=768",
     },
     {
         id: 4,
         desktopSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-desktop_4_24314612-019c-4594-94a9-76da59361a55.jpg?format=pjpg&v=1752220276&width=2048",
+        mobileSrc: "https://uk.stanley1913.com/cdn/shop/files/071625_lp-story-mobile_4.jpg?format=pjpg&v=1752220276&width=768",
     },
 ];
 
@@ -26,7 +30,7 @@ function MessiShopSlider() {
     return (
         <div className="relative w-full h-[500px] lg:h-[700px] my-10">
             <Swiper
-                modules={[Navigation, Autoplay]} 
+                modules={[Navigation, Autoplay]}
                 loop={true}
                 navigation={{ nextEl: ".custom-next", prevEl: ".custom-prev" }}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
