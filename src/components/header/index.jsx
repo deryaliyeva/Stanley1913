@@ -6,7 +6,7 @@ import flag from '../../assets/img/flags.jpg';
 import logos from '../../assets/img/stanleyLogo.png';
 import sidebarLogos from '../../assets/img/stanley-sidebar-logo.png';
 
-function Header({ cart, setCart }) {
+function Header({ cart, setCart, searchTerm, setSearchTerm }) {
     const [categories, setCategories] = useState([]); //navbar category
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
@@ -95,8 +95,7 @@ function Header({ cart, setCart }) {
                         </div>
                         <div className="relative flex items-center max-lg:hidden">
                             <i className="fa-solid fa-magnifying-glass text-gray-600 pl-3 absolute left-0"></i>
-                            <input type="search" placeholder="What are you looking for?"
-                                className="pl-8 border rounded-lg border-black w-[380px] max-xl:w-[240px] max-w-full min-h-[46px] outline-none" />
+                            <input type="search" placeholder="What are you looking for?" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="pl-8 border rounded-lg border-black w-[380px] max-xl:w-[240px] max-w-full min- outline-none" />
                         </div>
 
                         {/* Sidebar açmaq üçün button */}

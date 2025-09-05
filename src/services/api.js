@@ -23,21 +23,28 @@ export async function fetchProductById(id) {
 }
 
 const normalizeSubSlug = (subSlug) => {
-    const map = { "hair care": "haircare", "hairbare": "haircare", "men's grooming": "mensgrooming","bath & body": "bathbody", "dining&entertaining": "dining" }
-    return map[subSlug.toLowerCase()] || subSlug.replace(/[^a-zA-Z0-9]/g, '').toLowerCase() }
+    const map = {
+        "hair care": "haircare",
+        "hairbare": "haircare",
+        "men's grooming": "mensgrooming",
+        "bath & body": "bathbody",
+        "dining&entertaining": "dining"
+    };
+    return map[subSlug.toLowerCase()] || subSlug.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+};
 
 export async function fetchProductsBySlug(mainSlug, subSlug = null) {
     const slugMap = {
-        women: { clothing: "womenClothing", shoes: "womenShoes", bags: "womenBags", accessories: "womenAccessories", shirts: "womenShirts"},
+        women: { clothing: "womenClothing", shoes: "womenShoes", bags: "womenBags", accessories: "womenAccessories", shirts: "womenShirts" },
         men: { clothing: "menClothing", shoes: "menShoes", bags: "menBags", accessories: "menAccessories", watches: "menWatches" },
         kids: { nurserybaby: "nurseryBaby", babygirls03years: "babyGirls", babyboys03years: "babyBoys", girls316years: "girls", boys316years: "boys" },
-        jewellery: {rings: "jewelleryRings",bracelet: "jewelleryBracelets",necklaces: "jewelleryNecklaces",earrings: "jewelleryEarrings",watches: "jewelleryWatches"},
-        beauty: {skincare: "beautySkincare",makeup: "beautyMakeup",haircare: "beautyHairCare",fragrance: "beautyFragrance",bathbody: "beautyBathBody",mensgrooming: "beautyMens"},
-        home: {bath: "homeBath",bedroom: "homeBedroom",dining: "homeDining"}
+        jewellery: { rings: "jewelleryRings", bracelet: "jewelleryBracelets", necklaces: "jewelleryNecklaces", earrings: "jewelleryEarrings", watches: "jewelleryWatches" },
+        beauty: { skincare: "beautySkincare", makeup: "beautyMakeup", haircare: "beautyHairCare", fragrance: "beautyFragrance", bathbody: "beautyBathBody", mensgrooming: "beautyMens" },
+        home: { bath: "homeBath", bedroom: "homeBedroom", dining: "homeDining" }
     };
 
     let apiSlug;
-    
+
     if (subSlug) {
         const normalizedSubSlug = normalizeSubSlug(subSlug);
         apiSlug = slugMap[mainSlug]?.[normalizedSubSlug];
@@ -50,12 +57,6 @@ export async function fetchProductsBySlug(mainSlug, subSlug = null) {
         return [];
     }
 
-    try {
-        const res = await axios.get(`https://stanley-data.vercel.app/${apiSlug}`);
-        return res.data;
-    } catch (err) {
-        console.error("Error fetching products:", err);
-        return [];
-    }
+    const res = await axios.get(`https://stanley-data.vercel.app/${apiSlug}`);
+    return res.data;
 }
-

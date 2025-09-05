@@ -22,13 +22,15 @@ function App() {
     return savedCart ? JSON.parse(savedCart) : [];
   });
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
   return (
     <Router>
-      <Header cart={cart} setCart={setCart} />
+      <Header cart={cart} setCart={setCart} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Routes>
         <Route path="/hero-shop" element={<HeroShop />} />
         <Route path="/hero-shop-slider" element={<HeroShopSlider />} />
@@ -39,8 +41,8 @@ function App() {
         <Route path="/messi-video" element={<MessiVideoPlayer />} />
         <Route path="/messi-slider" element={<MessiShopSlider />} />
         <Route path="/product/:id" element={<ProductPage cart={cart} setCart={setCart} />} />
-        <Route path="/category/:mainSlug/:subSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
-        <Route path="/category/:mainSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
+        <Route path="/category/:mainSlug/:subSlug" element={<CategoryPage cart={cart} setCart={setCart} searchTerm={searchTerm} />} />
+        <Route path="/category/:mainSlug" element={<CategoryPage cart={cart} setCart={setCart} searchTerm={searchTerm} />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<Main cart={cart} setCart={setCart} />} />

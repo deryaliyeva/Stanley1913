@@ -11,29 +11,26 @@ function CollectionSlider() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        async function getProducts() {
-            try {
-                const response = await fetchProducts();
-                console.log("API cavabı:", response);
-
-                if (Array.isArray(response)) {
-                    setProducts(response);
-                } else {
-                    console.error("Data gözlənilməz formatdadır:", response);
-                    setProducts([]);
-                }
-            } catch (error) {
-                console.error("Məhsullar yüklənərkən xəta:", error);
+        fetchProducts().then(response => {
+            if (Array.isArray(response)) {
+                setProducts(response);
+            } else {
+                console.error("Data gözlənilməz formatdadır:", response);
                 setProducts([]);
-            } finally {
-                setLoading(false);
             }
-        }
-        getProducts();
+            setLoading(false);
+        }).catch(error => {
+            console.error("Məhsullar yüklənərkən xəta:", error);
+            setProducts([]);
+            setLoading(false);
+        });
     }, []);
 
-    if (loading) return <div>Loading products...</div>;
-    if (products.length === 0) return <div>No products found.</div>;
+    if (loading) return (
+        <div className="flex items-center justify-center my-10 h-[40vh]">
+            <div className="w-20 h-20 border-4 border-dashed rounded-full animate-spin text-red-900"></div>
+        </div>
+    );
 
     return (
         <>
