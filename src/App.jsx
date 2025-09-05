@@ -14,6 +14,7 @@ import FuelFaq from "./components/main/ProductHero/FuelFaq";
 import MessiShop from "./components/main/ProductHero/MessiShop";
 import MessiVideoPlayer from "./components/main/ProductHero/MessiVideoPlayer";
 import MessiShopSlider from "./components/main/ProductHero/MessiShopSlider";
+import Profile from "./components/login/Profile";
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/category/:mainSlug/:subSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
         <Route path="/category/:mainSlug" element={<CategoryPage cart={cart} setCart={setCart} />} />
         <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/*" element={<Main cart={cart} setCart={setCart} />} />
       </Routes>
       <Footer />

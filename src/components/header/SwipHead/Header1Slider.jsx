@@ -4,73 +4,49 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation, Autoplay } from 'swiper/modules';
 
-
-function Header1Slider() {
+export default function Header1Slider() {
   const swiperRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  const handleToggle = () => {
+  const toggleAutoplay = () => {
     if (swiperRef.current) {
-      if (isPlaying) {
-        swiperRef.current.autoplay.stop();
-      } else {
-        swiperRef.current.autoplay.start();
-      }
+      isPlaying ? swiperRef.current.autoplay.stop() : swiperRef.current.autoplay.start();
       setIsPlaying(!isPlaying);
     }
   };
 
   return (
-    <div className="flex items-center justify-between gap-5 relative w-full max-w-[45%] max-lg:max-w-[90%]">
-      <button
-        onClick={handleToggle}
-        className="text-[10px] text-white w-[20px] h-[40px] flex items-center p-2"
-      >
-        {isPlaying ? (
-          <i className="fa-solid fa-pause"></i>
-        ) : (
-          <i className="fa-solid fa-play"></i>
-        )}
+    <div className="relative flex items-center gap-3 w-full max-w-[45%] max-lg:max-w-[90%]">
+      <button onClick={toggleAutoplay} className="w-6 h-6 flex items-center justify-center text-white text-xs">
+        {isPlaying ? (<i className="fa-solid fa-pause"></i>) : (<i className="fa-solid fa-play"></i>)}
       </button>
 
-      <div className="w-full">
-        <Swiper
-          className='w-full'
-          modules={[Navigation, Autoplay]}
-          speed={600}
-          spaceBetween={10}
-          slidesPerView={1}
-          loop={true}
-          navigation={true}
-          autoplay={{
-            delay: 2000,
-            disableOnInteraction: false,
-          }}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          onAutoplayStart={() => setIsPlaying(true)}
-          onAutoplayStop={() => setIsPlaying(false)}
-        >
-          <SwiperSlide>
-            <div className="text-center flex items-center justify-center text-[12px] max-sm:text-[10px] font-bold text-[#fff] py-2">
-              <a className='underline' href="#">SHOP NOW: MESSI X STANLEY 1913</a>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="text-center flex items-center justify-center text-[12px] max-sm:text-[10px] font-bold text-[#fff] py-2">
-              <a className='underline' href="#">SUMMER EDIT: SHOP NOW</a>
-            </div>
-          </SwiperSlide>
-
-          <SwiperSlide>
-            <div className="text-center flex items-center justify-center text-[12px] max-sm:text-[10px] font-bold text-[#fff] py-2">
-              <a className='underline' href="#">FREE SHIPPING OVER $50</a>
-            </div>
-          </SwiperSlide>
-
-        </Swiper>
-      </div>
+      <Swiper
+        modules={[Navigation, Autoplay]}
+        onSwiper={(swiper) => (swiperRef.current = swiper)}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        loop
+        navigation
+        speed={600}
+        spaceBetween={10}
+        slidesPerView={1}
+        className="w-full">
+        <SwiperSlide>
+          <div className="text-center text-white font-bold text-[12px] py-2 max-sm:text-[10px]">
+            <a href="#" className="underline">SHOP NOW: MESSI X STANLEY 1913</a>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="text-center text-white font-bold text-[12px] py-2 max-sm:text-[10px]">
+            <a href="#" className="underline">SUMMER EDIT: SHOP NOW</a>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="text-center text-white font-bold text-[12px] py-2 max-sm:text-[10px]">
+            <a href="#" className="underline">FREE SHIPPING OVER $50</a>
+          </div>
+        </SwiperSlide>
+      </Swiper>
 
       <style>{`
             .swiper-button-prev,
@@ -82,7 +58,7 @@ function Header1Slider() {
             color: white !important;
             z-index: 10 !important;
             }
-  
+      
             .swiper-button-prev::after,
             .swiper-button-next::after {
             font-size: 13px !important;
@@ -90,7 +66,5 @@ function Header1Slider() {
             }
         `}</style>
     </div>
-  )
+  );
 }
-
-export default Header1Slider

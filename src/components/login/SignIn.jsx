@@ -10,16 +10,15 @@ export default function SignIn() {
         if (email === user.email && password === user.password) {
             localStorage.setItem("token", user.token);
             setError("");
-            window.location.href = "/";
+            window.location.href = "/profile";
         } else {
             setError("Email və ya şifrə səhvdir!");
         }
     };
 
-
     return (
-        <div className="h-[100vh] flex justify-center items-center dark:bg-gray-50">
-            <div className="flex flex-col w-[600px] h-[800px] p-6 rounded-md sm:p-10 dark:text-gray-800 bg-white shadow-lg">
+        <div className="h-[90vh] flex justify-center items-center dark:bg-gray-50">
+            <div className="flex flex-col w-[600px] h-[700px] p-6 rounded-md sm:p-10 dark:text-gray-800 bg-white shadow-lg">
                 <div className="mb-8 text-center">
                     <h1 className="my-3 text-4xl font-bold">Sign in</h1>
                     <p className="text-sm dark:text-gray-600">Sign in to access your account</p>

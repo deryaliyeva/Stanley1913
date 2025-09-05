@@ -1,16 +1,16 @@
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { fetchCategories } from "../../services/api";
-import { Link } from "react-router-dom";
 import Header1Slider from './SwipHead/Header1Slider';
 import flag from '../../assets/img/flags.jpg';
 import logos from '../../assets/img/stanleyLogo.png';
 import sidebarLogos from '../../assets/img/stanley-sidebar-logo.png';
 
 function Header({ cart, setCart }) {
-    const [categories, setCategories] = useState([]);
+    const [categories, setCategories] = useState([]); //navbar category
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
-    const [expandedCategory, setExpandedCategory] = useState(null);
+    const [expandedCategory, setExpandedCategory] = useState(null); //subcategory
 
     useEffect(() => {
         fetchCategories()
@@ -30,16 +30,25 @@ function Header({ cart, setCart }) {
                     <div className='text-[#fff] font-normal text-[14px] flex items-center justify-between max-lg:hidden'>
                         <div className='mr-[28px]'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
 
-                        <div className='mr-[28px]'>
+                        <div className="mr-[28px]">
                             {!localStorage.getItem("token") && (
-                                <Link to="/SignIn"
-                                    className="flex items-center"> <i className="fa-regular fa-user mr-1">
-                                    </i>Sign In | Sign Up </Link>)} {/* Sign Out */} {localStorage.getItem("token") && (
-                                        <Link to="/" onClick={() => localStorage.removeItem("token")}
-                                            className="flex items-center" >
-                                            <i className="fa-regular fa-user mr-1"></i>Sign Out </Link>)}
-                        </div>
+                                <Link to="/SignIn" className="flex items-center">
+                                    <i className="fa-regular fa-user mr-1"></i>
+                                    Sign In | Sign Up
+                                </Link>)}
 
+                            {localStorage.getItem("token") && (
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem("token");
+                                        window.location.href = "/";
+                                    }}
+                                    className="flex items-center">
+                                    <i className="fa-regular fa-user mr-1"></i>
+                                    Sign Out
+                                </button>
+                            )}
+                        </div>
                         <div className='mr-[28px]'><a href="#">Support</a></div>
                         <div className='text-[#fff] mr-[28px] flex items-center justify-center'>
                             <a href="#">USA <i className="fa-solid fa-angle-down ml-1"></i></a>
@@ -67,8 +76,7 @@ function Header({ cart, setCart }) {
                                                     <li key={sub.id}>
                                                         <Link
                                                             to={`/category/${category.slug}/${sub.slug}`}
-                                                            className="block px-2 py-1 text-gray-700 hover:text-red-600"
-                                                        >
+                                                            className="block px-2 py-1 text-gray-700 hover:text-red-600">
                                                             {sub.name}
                                                         </Link>
                                                     </li>
@@ -111,8 +119,7 @@ function Header({ cart, setCart }) {
             {/* Sidebar özü */}
             <aside
                 className={`fixed top-0 right-0 bottom-0 bg-white shadow-lg p-6 overflow-y-auto transition-all duration-500 ease-in-out z-[1000]
-        ${sidebarOpen ? "translate-x-0 opacity-100 w-full max-md:w-full" : "translate-x-full opacity-0 w-0"}`}
-            >
+                ${sidebarOpen ? "translate-x-0 opacity-100 w-full max-md:w-full" : "translate-x-full opacity-0 w-0"}`}>
                 <button className="mb-6 text-gray-700 font-bold text-[20px]" onClick={() => setSidebarOpen(false)}>
                     <i className="fa-solid fa-xmark"></i>
                 </button>
@@ -127,8 +134,7 @@ function Header({ cart, setCart }) {
                             <li key={category.id}>
                                 <div
                                     className="px-4 py-2 font-bold cursor-pointer flex justify-between items-center hover:text-red-600"
-                                    onClick={() => setExpandedCategory(expandedCategory === category.id ? null : category.id)}
-                                >
+                                    onClick={() => setExpandedCategory(expandedCategory === category.id ? null : category.id)}>
                                     {category.name}
                                     {category.Subcategory && <i className="fa-solid fa-chevron-down"></i>}
                                 </div>
@@ -139,8 +145,7 @@ function Header({ cart, setCart }) {
                                                 <Link
                                                     to={`/category/${category.slug}/${sub.slug}`}
                                                     className="block px-2 py-1 text-gray-700 hover:text-red-600"
-                                                    onClick={() => setSidebarOpen(false)}
-                                                >
+                                                    onClick={() => setSidebarOpen(false)}>
                                                     {sub.name}
                                                 </Link>
                                             </li>
@@ -154,15 +159,28 @@ function Header({ cart, setCart }) {
 
                 <div className="mt-10 flex items-center">
                     <div className='text-[#101010] font-[500] text-[17px]'>
-                        <div className='mr-[28px] leading-10'><a href="#"><i className="fa-solid fa-crown mr-1"></i>Stanley Club</a></div>
-                        <div className='mr-[28px]'>
+                        <div className='mr-[28px] leading-10'>
+                            <a href="#">
+                                <i className="fa-solid fa-crown mr-1"></i>Stanley Club
+                            </a>
+                        </div>
+                        <div className="mr-[28px]">
                             {!localStorage.getItem("token") && (
-                                <Link to="/SignIn"
-                                    className="flex items-center"> <i className="fa-regular fa-user mr-1">
-                                    </i>Sign In | Sign Up </Link>)} {/* Sign Out */} {localStorage.getItem("token") && (
-                                        <Link to="/" onClick={() => localStorage.removeItem("token")}
-                                            className="flex items-center" >
-                                            <i className="fa-regular fa-user mr-1"></i>Sign Out </Link>)}
+                                <Link to="/SignIn" className="flex items-center">
+                                    <i className="fa-regular fa-user mr-1"></i>
+                                    Sign In | Sign Up
+                                </Link>)}
+                            {localStorage.getItem("token") && (
+                                <button
+                                    onClick={() => {
+                                        localStorage.removeItem("token");
+                                        window.location.href = "/";
+                                    }}
+                                    className="flex items-center">
+                                    <i className="fa-regular fa-user mr-1"></i>
+                                    Sign Out
+                                </button>
+                            )}
                         </div>
                         <div className='mr-[28px] leading-10'><a href="#">Support</a></div>
                         <div className='text-[#101010] flex items-center'>
@@ -174,12 +192,12 @@ function Header({ cart, setCart }) {
             </aside>
             <div
                 className={`fixed inset-0 z-[999] transition-all duration-500
-      ${cartOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"}`}
-                onClick={() => setCartOpen(false)}
-            ></div>
+                    ${cartOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full"}`}
+                onClick={() => setCartOpen(false)}>
+            </div>
 
             <aside className={`fixed top-0 right-0 h-full bg-white shadow-lg p-6 z-[1000] transition-all duration-500 ease-in-out flex flex-col
-    ${cartOpen ? "translate-x-0 opacity-100 w-1/2 max-md:w-full" : "translate-x-full opacity-0 w-0"}`}>
+                ${cartOpen ? "translate-x-0 opacity-100 w-1/2 max-md:w-full" : "translate-x-full opacity-0 w-0"}`}>
 
                 <div className="flex justify-between items-center mb-6">
                     <button className="text-gray-700 cursor-pointer font-bold text-[20px]" onClick={() => setCartOpen(false)}>
@@ -189,19 +207,15 @@ function Header({ cart, setCart }) {
                     {cart.length > 0 && (
                         <button
                             className="text-red-600 hover:text-red-800 font-bold text-[14px]"
-                            onClick={() => setCart([])}
-                        >
-                            Delete All
+                            onClick={() => setCart([])}> Delete All
                         </button>
                     )}
                 </div>
 
                 <h1 className="text-2xl font-bold mb-4">Your Card</h1>
 
-                {cart.length === 0 ? (
-                    <p>Cart is empty</p>
-                ) : (
-                    <ul className="flex flex-col gap-4 overflow-y-auto flex-grow">
+                {cart.length === 0 ? (<p>Cart is empty</p>) :
+                    (<ul className="flex flex-col gap-4 overflow-y-auto flex-grow">
                         {cart.map((item, idx) => (
                             <li key={idx} className="flex items-center justify-between border-b border-gray-200 pb-2">
                                 <div className="flex items-center gap-3">
@@ -220,15 +234,14 @@ function Header({ cart, setCart }) {
                                             const newCart = cart.filter((_, i) => i !== idx);
                                             setCart(newCart);
                                         }}
-                                        className="text-red-600 hover:text-red-800"
-                                    >
+                                        className="text-red-600 hover:text-red-800">
                                         <i className="fa-solid fa-trash-can"></i>
                                     </button>
                                 </div>
                             </li>
                         ))}
                     </ul>
-                )}
+                    )}
             </aside>
         </>
     );
