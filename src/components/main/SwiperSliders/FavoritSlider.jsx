@@ -1,16 +1,22 @@
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/pagination";
 import brands from "../data/Data.jsx";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function FavoritSlider() {
+    useEffect(() => {
+        AOS.init({ duration: 1000, once: true });
+    }, []);
+
     return (
-        <div className="py-[48px] px-4 max-w-[1280px] mx-auto">
+        <div data-aos="fade-right" className="py-[48px] px-4 max-w-[1280px] mx-auto">
             <h2 className="text-[32px] text-[#101010] font-bold uppercase tracking-[1.8px] pb-5">
-            Favorite brands
+                Favorite brands
             </h2>
 
             <style>{`
@@ -37,6 +43,10 @@ function FavoritSlider() {
 
 
             <Swiper
+                data-aos="fade-left"
+                data-aos-anchor="#example-anchor"
+                data-aos-offset="1000"
+                data-aos-duration="1500"
                 slidesPerView={4}
                 spaceBetween={20}
                 pagination={{ clickable: true }}

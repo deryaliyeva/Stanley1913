@@ -1,17 +1,24 @@
 import { Link } from "react-router-dom";
 import messi from "../../../assets/img/messi.jpg";
 import logoPng from "../../../assets/img/messi-stanley-logo.avif";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function Messi() {
+    useEffect(() => {
+        AOS.init({ duration: 1000, once: true });
+    }, []);
+
     return (
         <>
-            <div className="relative max-lg:h-[193vh] h-[90vh] max-md:h-[80vh] w-full overflow-hidden">
+            <div data-aos="fade-up" className="relative max-lg:h-[193vh] h-[90vh] max-md:h-[80vh] w-full overflow-hidden">
                 <img
                     src={messi}
                     alt="img"
                     className="absolute inset-0 w-full h-full object-cover -z-10"
                 />
-                <div className="absolute top-[250px] max-lg:top-[75%] max-sm:top-[400px] max-md:top-[60%] bottom-0 left-0 px-[52px] max-md:px-[24px] pb-[40px] max-w-[626px] max-md:max-w-[500px] max-md:min-h-[36px] max-md:leading-[0.1px] text-white">
+                <div data-aos="fade-down" className="absolute top-[250px] max-lg:top-[75%] max-sm:top-[400px] max-md:top-[60%] bottom-0 left-0 px-[52px] max-md:px-[24px] pb-[40px] max-w-[626px] max-md:max-w-[500px] max-md:min-h-[36px] max-md:leading-[0.1px] text-white">
                     <img className="max-w-[250px] min-h-[113px] max-md:max-w-[200px] max-sm:max-w-[118px] max-sm:min-h-[53px] max-md:min-h-[15px]" src={logoPng} alt="imgs" />
                     <span className="block text-[90px] max-md:text-[34px] font-bold leading-[80px] max-sm:leading-[30px]">
                         Start early. Stay late.

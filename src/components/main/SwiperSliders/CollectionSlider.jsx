@@ -5,6 +5,8 @@ import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import { fetchProducts } from "../../../services/api";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function CollectionSlider() {
     const [products, setProducts] = useState([]);
@@ -15,15 +17,18 @@ function CollectionSlider() {
             if (Array.isArray(response)) {
                 setProducts(response);
             } else {
-                console.error("Data gözlənilməz formatdadır:", response);
                 setProducts([]);
             }
             setLoading(false);
         }).catch(error => {
-            console.error("Məhsullar yüklənərkən xəta:", error);
+            console.error(error);
             setProducts([]);
             setLoading(false);
         });
+    }, []);
+
+    useEffect(() => {
+        AOS.init({ duration: 1000, once: true, });
     }, []);
 
     if (loading) return (
@@ -34,6 +39,10 @@ function CollectionSlider() {
 
     return (
         <>
+            <h1 data-aos="fade-right" className="text-[25px] font-bold uppercase max-w-[1250px] mx-auto my-5">
+                Shop the Collection
+            </h1>
+
             <style>{`
                 .swiper-pagination {
                     bottom: 0px !important;
@@ -71,7 +80,12 @@ function CollectionSlider() {
                 }}
             >
                 {products.map((product) => (
-                    <SwiperSlide className="flex items-center justify-center h-full bg-gray-100 rounded-lg" key={product.id}>
+                    <SwiperSlide
+                        data-aos="fade-left"
+                        data-aos-anchor="#example-anchor"
+                        data-aos-offset="1000"
+                        data-aos-duration="1500"
+                        className="flex items-center justify-center h-full bg-gray-100 rounded-lg" key={product.id}>
                         <Link to={`/product/${product.id}`}
                             className="h-full max-w-[280px] pb-5 overflow-hidden"
                         >

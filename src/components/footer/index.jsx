@@ -122,10 +122,10 @@ function Footer() {
 
           <div className="max-w-[200px] my-[60px]">
             <ul className="flex items-center justify-between gap-2 text-[16px]">
-              <li><a href="#"><i className="fa-brands fa-tiktok"></i></a></li>
-              <li><a href="#"><i className="fa-brands fa-instagram"></i></a></li>
-              <li><a href="#"><i className="fa-brands fa-facebook-f"></i></a></li>
-              <li><a href="#"><i className="fa-brands fa-youtube"></i></a></li>
+              <li><a href="https://www.tiktok.com/@stanleybrand?lang=en"><i className="fa-brands fa-tiktok"></i></a></li>
+              <li><a href="https://www.instagram.com/stanley_brand/"><i className="fa-brands fa-instagram"></i></a></li>
+              <li><a href="https://www.facebook.com/StanleyBrand/"><i className="fa-brands fa-facebook-f"></i></a></li>
+              <li><a href="https://www.youtube.com/user/StanleyBottle"><i className="fa-brands fa-youtube"></i></a></li>
             </ul>
           </div>
 
