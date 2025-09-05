@@ -113,10 +113,10 @@ function Footer() {
 
             <div className="relative flex items-center justify-center max-lg:justify-start">
               <img className="max-w-[80%] min-h-[50%] rounded-[5px]" src={footerImg} alt="img" />
-              <button className="absolute left-25 max-lg:left-8 max-md:left-5 bottom-5 flex text-[16px] max-sm:text-[8px] uppercase font-bold tracking-[1px] items-center gap-2 px-6 py-3 bg-black text-white border border-black rounded-md transition-all duration-300 hover:bg-white hover:text-black">
+              <a href="https://www.stanley1913.com/collections/shop-all" className="absolute left-25 max-lg:left-8 max-md:left-5 bottom-5 flex text-[16px] max-sm:text-[8px] uppercase font-bold tracking-[1px] items-center gap-2 px-6 py-3 bg-black text-white border border-black rounded-md transition-all duration-300 hover:bg-white hover:text-black">
                 Shop All Accept
                 <i className="fa-solid fa-arrow-right text-[16px]"></i>
-              </button>
+              </a>
             </div>
           </section>
 
