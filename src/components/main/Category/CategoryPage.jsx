@@ -8,7 +8,6 @@ function CategoryPage({ cart, setCart, searchTerm }) {
     const [loading, setLoading] = useState(true);
     const [visibleCount, setVisibleCount] = useState(6);
 
-    // Məhsulları API-dən çəkirik
     useEffect(() => {
         fetchProductsBySlug(mainSlug, subSlug).then((data) => {
             setProducts(data);
@@ -16,19 +15,14 @@ function CategoryPage({ cart, setCart, searchTerm }) {
         });
     }, [mainSlug, subSlug]);
 
-    // Yüklənmə indikatoru
     if (loading) return (
         <div className="flex items-center justify-center my-10 h-[90vh]">
             <div className="w-20 h-20 border-4 border-dashed rounded-full animate-spin text-red-900"></div>
         </div>
     );
-
-    // SearchTerm varsa, məhsulları filtrləyirik
     const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(searchTerm?.toLowerCase() || "")
     );
-
-    // Show more üçün görünən məhsullar
     const visibleProducts = filteredProducts.slice(0, visibleCount);
 
     const handleAddToCart = (product) => {
@@ -113,7 +107,6 @@ function CategoryPage({ cart, setCart, searchTerm }) {
                 </div>
             )}
 
-            {/* Show More düyməsi */}
             {visibleCount < filteredProducts.length && (
                 <div className="text-center mt-8">
                     <button

@@ -11,6 +11,8 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
     const [expandedCategory, setExpandedCategory] = useState(null); //subcategory
+    const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
+
 
     useEffect(() => {
         fetchCategories()
@@ -21,6 +23,9 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
     useEffect(() => {
         document.body.style.overflow = cartOpen || sidebarOpen ? "hidden" : "";
     }, [cartOpen, sidebarOpen]);
+
+    const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
         <>
@@ -90,8 +95,11 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
                     </nav>
 
                     <div className="items-center flex-shrink-0 justify-center flex gap-2">
-                        <div className="hidden max-lg:flex items-center">
-                            <i className="fa-solid fa-magnifying-glass text-[20px] dark:text-gray-700 pl-3"></i>
+                        {/* Mobile search icon */}
+                        <div className="lg:hidden flex items-center">
+                            <button onClick={() => setMobileSearchOpen(true)}>
+                                <i className="fa-solid fa-magnifying-glass text-[20px] text-gray-700"></i>
+                            </button>
                         </div>
                         <div className="relative flex items-center max-lg:hidden">
                             <i className="fa-solid fa-magnifying-glass text-gray-600 pl-3 absolute left-0"></i>
@@ -108,10 +116,33 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
                         </div>
 
                         {/* Cart ikonu */}
-                        <div className='text-[22px] dark:text-gray-700 flex items-center justify-center order-1'>
-                            <i className="fa-solid fa-bag-shopping px-1 cursor-pointer" onClick={() => setCartOpen(true)}></i>
+                        <div className='relative dark:text-gray-700 flex items-center justify-center order-1'>
+                            <i className="fa-solid fa-bag-shopping px-1 cursor-pointer text-[35px] max-lg:text-[22px]" onClick={() => setCartOpen(true)}></i>
+                            {totalItems > 0 && (
+                                <span className="absolute top-0 right-0 bg-red-600 text-white text-[10px] font-bold rounded-full w-4 h-4 max-lg:w-3 max-lg:h-3 max-lg:text-[8px] flex items-center justify-center">
+                                    {totalItems}
+                                </span>
+                            )}
                         </div>
                     </div>
+                    {/* Mobile Search Sidebar */}
+                    <aside className={`fixed top-0 right-0 h-full bg-white z-[1000] p-6 transition-transform duration-500
+                        ${mobileSearchOpen ? "translate-x-0 w-1/2" : "translate-x-full w-0"} max-md:w-full`}>
+                        <div className="flex justify-between items-center mb-4">
+                            <h2 className="text-xl font-bold">Search</h2>
+                            <button onClick={() => setMobileSearchOpen(false)}>
+                                <i className="fa-solid fa-xmark text-2xl"></i>
+                            </button>
+                        </div>
+                        <input
+                            type="search"
+                            placeholder="What are you looking for?"
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            className="w-full border rounded-lg border-black p-2 outline-none"
+                        />
+                    </aside>
+
                 </div>
             </header>
 
@@ -209,36 +240,46 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
                     }
                 </div>
 
-                <h1 className="text-2xl font-bold mb-4">Your Card</h1>
+                <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
                 {cart.length === 0 ? (<p>Cart is empty</p>) :
-                    (<ul className="flex flex-col gap-4 overflow-y-auto flex-grow">
-                        {cart.map((item, idx) => (
-                            <li key={idx} className="flex items-center justify-between border-b border-gray-200 pb-2">
-                                <div className="flex items-center gap-3">
-                                    <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
-                                    <div>
-                                        <p className="font-bold">{item.brand}</p>
-                                        <p>{item.name}</p>
+                    (<>
+                        <ul className="flex flex-col gap-4 overflow-y-auto flex-grow">
+                            {cart.map((item, idx) => (
+                                <li key={idx} className="flex items-center justify-between border-b border-gray-200 pb-2">
+                                    <div className="flex items-center gap-3">
+                                        <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
+                                        <div>
+                                            <p className="font-bold">{item.brand}</p>
+                                            <p>{item.name}</p>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div className="text-right flex flex-col items-end gap-1">
-                                    <p>Qty: {item.quantity}</p>
-                                    <p>${item.price * item.quantity}</p>
-                                    <button
-                                        onClick={() => {
-                                            const newCart = cart.filter((_, i) => i !== idx);
-                                            setCart(newCart);
-                                        }}
-                                        className="text-red-600 hover:text-red-800">
-                                        <i className="fa-solid fa-trash-can"></i>
-                                    </button>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                    )}
+                                    <div className="text-right flex flex-col items-end gap-1">
+                                        <p>Qty: {item.quantity}</p>
+                                        <p>${item.price * item.quantity}</p>
+                                        <button
+                                            onClick={() => {
+                                                const newCart = cart.filter((_, i) => i !== idx);
+                                                setCart(newCart);
+                                            }}
+                                            className="text-red-600 hover:text-red-800">
+                                            <i className="fa-solid fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+
+                        {/* TotalPrice */}
+                        <div className="mt-6 border-t pt-4">
+                            <h2 className="text-xl font-bold flex justify-between">
+                                <span>Total Price:</span>
+                                <span>${totalPrice.toFixed(2)}</span>
+                            </h2>
+                        </div>
+                    </>)
+                }
             </aside>
         </>
     );
