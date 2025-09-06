@@ -15,6 +15,7 @@ import MessiShop from "./components/main/ProductHero/MessiShop";
 import MessiVideoPlayer from "./components/main/ProductHero/MessiVideoPlayer";
 import MessiShopSlider from "./components/main/ProductHero/MessiShopSlider";
 import Profile from "./components/login/Profile";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -29,6 +30,7 @@ function App() {
   }, [cart]);
 
   return (
+    <>
     <Router>
       <Header cart={cart} setCart={setCart} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Routes>
@@ -49,6 +51,13 @@ function App() {
       </Routes>
       <Footer />
     </Router>
+    <Toaster
+      position="top-right"
+      reverseOrder={false}
+    />
+    </>
+
+    
   );
 }
 

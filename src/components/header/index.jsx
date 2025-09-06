@@ -117,7 +117,7 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
                                 </button>
                             </div>
 
-                            {/* Cart ikonu */}
+                            {/* Cart ikonu */} 
                             <div className='relative dark:text-gray-700 flex items-center justify-center order-1'>
                                 <i className="fa-solid fa-bag-shopping px-1 cursor-pointer text-[35px] max-lg:text-[22px]" onClick={() => setCartOpen(true)}></i>
                                 {totalItems > 0 && (

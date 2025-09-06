@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchProductsBySlug } from "../../../services/api.js";
+import toast from "react-hot-toast";
 
 function CategoryPage({ cart, setCart, searchTerm }) {
     const { mainSlug, subSlug } = useParams();
@@ -26,6 +27,7 @@ function CategoryPage({ cart, setCart, searchTerm }) {
     const visibleProducts = filteredProducts.slice(0, visibleCount);
 
     const handleAddToCart = (product) => {
+        toast.success('Added products!')
         const cartItem = {
             id: product.id,
             name: product.name,
