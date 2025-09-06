@@ -70,12 +70,13 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
                         </Link>
 
                         <nav className="relative max-lg:hidden">
-                            <ul className="flex space-x-6 p-4 font-bold text-[15px] uppercase">
+                            <ul className="flex space-x-6 px-4 font-bold text-[15px] uppercase">
                                 {categories.map((category) => (
-                                    <li key={category.id} className="relative group">
+                                    <li key={category.id} className="relative group py-4">
                                         <span className="cursor-pointer">{category.name}</span>
                                         {category.Subcategory && (
-                                            <div className="absolute left-0 top-full bg-white w-[300px] max-h-[500px] overflow-y-auto shadow-lg border border-gray-200 mt-1 rounded p-4 z-50 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+                                            <div className="absolute left-0 top-0 z-50 opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-opacity duration-300">
+                                                <div className="absolute top-[45px] bg-white w-[300px] max-h-[500px] overflow-y-auto shadow-lg border border-gray-200 mt-1 rounded p-4">
                                                 <ul className="flex flex-col space-y-2">
                                                     {category.Subcategory.map((sub) => (
                                                         <li key={sub.id}>
@@ -87,6 +88,7 @@ function Header({ cart, setCart, searchTerm, setSearchTerm }) {
                                                         </li>
                                                     ))}
                                                 </ul>
+                                            </div>
                                             </div>
                                         )}
                                     </li>
