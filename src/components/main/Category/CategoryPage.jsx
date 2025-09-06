@@ -75,7 +75,7 @@ function CategoryPage({ cart, setCart, searchTerm }) {
                                 ))}
                             </div>
 
-                            <div className="flex items-center gap-2 mb-2">
+                            <div className="flex items-center gap-2 mb-2 flex-wrap">
                                 {product.Size?.map((size, index) => (
                                     <span
                                         key={index}
@@ -89,7 +89,7 @@ function CategoryPage({ cart, setCart, searchTerm }) {
                                 {product.category?.name} • {product.Brands?.name}
                             </p>
 
-                            <h2 className="font-semibold text-gray-800 mb-1 line-clamp-1">
+                            <h2 className="font-semibold text-gray-800 mb-1">
                                 {product.name}
                             </h2>
 
